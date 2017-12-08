@@ -1,0 +1,10 @@
+*.*log
+*.exe
+*.obj
+*.suo
+*VC.db
+*VC.opendb
+.vs
+Build
+intermediate
+Intermediate
