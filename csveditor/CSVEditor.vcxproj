@@ -20,13 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CSVFile.cpp" />
-    <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Spreadsheet.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CSVFile.h" />
-    <ClInclude Include="FileLoader.h" />
+    <ClInclude Include="Spreadsheet.hpp" />
     <ClInclude Include="Table.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -80,23 +80,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\Intermediate\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\build\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\Intermediate\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\build\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\Intermediate\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\build\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)build\$(Platform)_$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)build\Intermediate\$(ProjectName)\$(Platform)_$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\build\$(Platform)_$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)Intermediate\$(Platform)_$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

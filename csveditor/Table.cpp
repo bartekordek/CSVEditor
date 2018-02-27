@@ -69,10 +69,10 @@ void DemoTable::draw_cell( TableContext context,
 void DemoTable::event_callback( Fl_Widget*, void *data )
 {
     DemoTable *o = (DemoTable*)data;
-    o->event_callback2();
+    o->tableEvent();
 }
 
-void DemoTable::event_callback2()
+void DemoTable::tableEvent()
 {
     int R = callback_row(),
         C = callback_col();
