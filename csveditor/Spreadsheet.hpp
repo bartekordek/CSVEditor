@@ -60,7 +60,7 @@ protected:
 private:
     const double getVal( int r, int c );
 
-    Fl_Int_Input* input = nullptr;					// single instance of Fl_Int_Input widget
+    Fl_Int_Input* input = nullptr;
     Rows values;			// array of data for cells
     int row_edit, col_edit;				// row/col being modified
     int s_left, s_top, s_right, s_bottom;			// kb nav + mouse selection

@@ -28,6 +28,7 @@ Spreadsheet::Spreadsheet(
 
 Spreadsheet::~Spreadsheet()
 {
+    delete this->input;
 }
 
 void Spreadsheet::set_value_hide()
