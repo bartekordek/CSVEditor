@@ -112,13 +112,17 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>
-xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+      </Command>
     </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -133,13 +137,17 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Link>
     <PostBuildEvent>
       <Command>
-xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+      </Command>
     </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -155,13 +163,18 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fltk.lib;fltk_forms.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>
-xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+      </Command>
     </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -177,13 +190,18 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>fltk.lib;fltk_forms.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>
-xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+      </Command>
     </PostBuildEvent>
+    <PreLinkEvent>
+      <Command>xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
