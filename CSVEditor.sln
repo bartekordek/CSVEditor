@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcul", "deps\CUL\libcul\libcul.vcxproj", "{A44B1777-B335-4580-AE9E-89CB3779F81E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CSVEditor", "csveditor\CSVEditor.vcxproj", "{61F1D0F0-E17D-4E01-AFB7-D157B55EFE9D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleSpreadSheet", "SimpleSpreadSheet\SimpleSpreadSheet.vcxproj", "{61F1D0F0-E17D-4E01-AFB7-D157B55EFE9D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A44B1777-B335-4580-AE9E-89CB3779F81E} = {A44B1777-B335-4580-AE9E-89CB3779F81E}
 	EndProjectSection
