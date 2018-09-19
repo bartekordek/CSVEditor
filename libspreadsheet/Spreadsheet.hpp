@@ -31,7 +31,7 @@ class Spreadsheet final:
     public Fl_Table
 {
 public:
-    Spreadsheet( int X, int Y, int W, int H, const char* L = 0 );
+    Spreadsheet( int X, int Y, int W, int H, const Values& values, const char* L = 0 );
     ~Spreadsheet();
 
     struct CartPos
@@ -56,15 +56,13 @@ private:
     void setValueHide();
     void doneEditing();
     void startEditing( int R, int C );
-    double sumRows( int C );// Return the sum of all rows in this column
-    double sumCols( int R );// Return the sum of all cols in this row
-    double sumAll();// Return the sum of all cells in table
 
     // void drawCell( CnstStr& val, const CartPos& position );
 
     Fl_Int_Input* input = nullptr;
 
     std::mutex valuesMtx;
+    std::recursive_mutex fieldsMutex;
     Values m_values;
     TablePos m_currentCellInfo;
 };

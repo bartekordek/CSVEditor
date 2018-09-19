@@ -1,7 +1,7 @@
 #pragma once
-#include "CUL/STD_vector.hpp"
-#include "CUL/STD_string.hpp"
-#include "CUL/STD_memory.hpp"
+#include <string>
+#include <vector>
+#include <memory>
 
 class CSVFile
 {

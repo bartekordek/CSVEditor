@@ -5,6 +5,7 @@ NAMESPACE_BEGIN( SPRDSHTAPP )
 Spreadsheet::Spreadsheet(
     int X, int Y,
     int W, int H,
+    const Values& values,
     const char* L ):
     Fl_Table( X, Y, W, H, L )
 {
@@ -19,15 +20,7 @@ Spreadsheet::Spreadsheet(
     input->maximum_size( 5 );
     input->color( FL_YELLOW );
 
-    for( unsigned rowId = 0; rowId < MAX_ROWS; ++rowId )
-    {
-        Row row;
-        for( unsigned colId = 0; colId < MAX_COLS; ++colId )
-        {
-            row.push_back( "0" );
-        }
-        this->m_values.push_back( row );
-    }
+    load( values );
     end();
     set_selection( 0, 0, 0, 0 );
 }
@@ -38,8 +31,13 @@ Spreadsheet::~Spreadsheet()
 
 void Spreadsheet::load( const Values& values )
 {
-    std::lock_guard<std::mutex> lock( this->valuesMtx );
+    std::lock_guard<std::mutex> lockValues( this->valuesMtx );
+    std::lock_guard<std::recursive_mutex> lockFields( this->fieldsMutex );
     this->m_values = values;
+    auto rowCount = static_cast< unsigned >( values.size() );
+    auto colsCount = static_cast< unsigned >( values.front().size() );
+    Fl_Table::rows( rowCount + 1 );
+    Fl_Table::cols( colsCount + 1 );
 }
 
 void Spreadsheet::setValueHide()
@@ -52,7 +50,9 @@ void Spreadsheet::setValueHide()
 
 void Spreadsheet::startEditing( int R, int C )
 {
-    m_currentCellInfo.setBoth( static_cast<unsigned>( R ), static_cast<unsigned>( C ) );
+    m_currentCellInfo.setBoth(
+        static_cast<unsigned>( R ),
+        static_cast<unsigned>( C ) );
     // Clear any previous multicell selection
     set_selection( R, C, R, C );
     int X, Y, W, H;
@@ -60,7 +60,8 @@ void Spreadsheet::startEditing( int R, int C )
     find_cell( CONTEXT_CELL, R, C, X, Y, W, H ); // Find X/Y/W/H of cell
     // Move Fl_Input widget there
     input->resize( X, Y, W, H );
-    input->value( m_values[R][C].c_str() );
+    auto newValue = m_values[R][C].c_str();
+    input->value( newValue );
     // Select entire input field
     input->position( 0, static_cast<int>( m_values[R][C].length() ) );
     // Show the input widget, now that we've positioned it
@@ -78,43 +79,6 @@ void Spreadsheet::doneEditing()
     }
 }
 
-// Return the sum of all rows in this column
-inline double Spreadsheet::sumRows( int C )
-{
-    double sum = 0.0;
-    for( int r = 0; r < rows() - 1; ++r )			// -1: don't include cell data in 'totals' column
-        sum += std::stod( m_values[r][C] );
-    return( sum );
-}
-
-// Return the sum of all cols in this row
-
-inline double Spreadsheet::sumCols( int R )
-{
-    double sum = 0.0;
-    for( int c = 0; c < cols() - 1; ++c )			// -1: don't include cell data in 'totals' column
-    {
-        auto val = m_values[R][c];
-        sum += std::stod( val );
-    }
-    return( sum );
-}
-
-// Return the sum of all cells in table
-
-inline double Spreadsheet::sumAll()
-{
-    double sum = 0.0;
-    for( int c = 0; c < cols() - 1; ++c )			// -1: don't include cell data in 'totals' column
-    {
-        for( int r = 0; r < rows() - 1; ++r )			// -1: ""
-        {
-            sum += std::stod( m_values[r][c] );
-        }
-    }
-    return sum;
-}
-
 // Handle drawing all cells in table
 void Spreadsheet::draw_cell(
     TableContext context,
@@ -122,6 +86,7 @@ void Spreadsheet::draw_cell(
     int X, int Y,
     int W, int H )
 {
+    std::lock_guard<std::recursive_mutex> lock( this->fieldsMutex );
     TablePos cellInfo;
     cellInfo.setBoth( R, C );
     static std::string s;
@@ -136,15 +101,9 @@ void Spreadsheet::draw_cell(
     {
         fl_draw_box( FL_THIN_UP_BOX, X, Y, W, H, col_header_color() );
         fl_color( FL_BLACK );
-        if( C == cols() - 1 )
-        {			// Last column? show 'TOTAL'
-            fl_draw( "TOTAL", X, Y, W, H, FL_ALIGN_CENTER );
-        }
-        else
-        {				// Not last column? show column letter
-            s = 'A' + std::to_string( C );
-            fl_draw( s.c_str(), X, Y, W, H, FL_ALIGN_CENTER );
-        }
+
+        s = 'A' + std::to_string( C );
+        fl_draw( s.c_str(), X, Y, W, H, FL_ALIGN_CENTER );
     }
     fl_pop_clip();
     return;
@@ -155,25 +114,19 @@ void Spreadsheet::draw_cell(
         {
             fl_draw_box( FL_THIN_UP_BOX, X, Y, W, H, row_header_color() );
             fl_color( FL_BLACK );
-            if( R == rows() - 1 )
-            {			// Last row? Show 'Total'
-                fl_draw( "TOTAL", X, Y, W, H, FL_ALIGN_CENTER );
-            }
-            else
-            {				// Not last row? show row#
-                s = std::to_string( R + 1 );
-                fl_draw( s.c_str(), X, Y, W, H, FL_ALIGN_CENTER );
-            }
+
+            s = std::to_string( R + 1 );
+            fl_draw( s.c_str(), X, Y, W, H, FL_ALIGN_CENTER );
         }
         fl_pop_clip();
     return;
 
     case CONTEXT_CELL:
-    {			// table wants us to draw a cell
+    {// table wants us to draw a cell
         if( cellInfo == m_currentCellInfo &&
             input->visible() )
         {
-            return;					// dont draw for cell with input widget over it
+            return;// dont draw for cell with input widget over it
         }
         // Background
         if( C < cols() - 1 && R < rows() - 1 )
@@ -193,22 +146,28 @@ void Spreadsheet::draw_cell(
                 fl_font( FL_HELVETICA | FL_BOLD, 14 );	// ..in bold font
                 if( C == cols() - 1 && R == rows() - 1 )
                 {	// Last row+col? Total all cells
-                    s = std::to_string( sumAll() );
+                    //s = std::to_string( sumAll() ); TODO
                 }
                 else if( C == cols() - 1 )
                 {		// Row subtotal
-                    s = std::to_string( sumCols( R ) );
+                    //s = std::to_string( sumCols( R ) ); TODO
                 }
                 else if( R == rows() - 1 )
                 {		// Col subtotal
-                    s = std::to_string( sumRows( C ) );
+                    //s = std::to_string( sumRows( C ) ); TODO
                 }
                 fl_draw( s.c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
             }
             else
             {				// Not last row or col? Show cell contents
                 fl_font( FL_HELVETICA, 14 );		// ..in regular font
-                fl_draw( m_values[R][C].c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
+                if( m_values.size() > R )
+                {
+                    if( m_values.front().size() > C )
+                    {
+                        fl_draw( m_values[R][C].c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
+                    }
+                }
             }
         }
         fl_pop_clip();
