@@ -32,38 +32,26 @@ public:
     ~Spreadsheet();
 
     void set_value_hide();
-
     void rows( int val );
-
     void cols( int val );
-
     inline int rows();
-
     inline int cols();
-
     void start_editing( int R, int C );
-
     void done_editing();
-
-    const double sum_rows( int C );
-    // Return the sum of all cols in this row
-    const double sum_cols( int R );
-    // Return the sum of all cells in table
-    const double sum_all();
 
 protected:
     void draw_cell( TableContext context, int = 0, int = 0, int = 0, int = 0, int = 0, int = 0 );
-    void tableEvent();				// table's event callback (instance)
+    void tableEvent();
     static void event_callback( Fl_Widget*, void *v );
     static void input_cb( Fl_Widget*, void* v );
 
 private:
     const double getVal( int r, int c );
 
-    Fl_Int_Input* input = nullptr;
-    Rows values;			// array of data for cells
-    int row_edit, col_edit;				// row/col being modified
-    int s_left, s_top, s_right, s_bottom;			// kb nav + mouse selection
+    Fl_Int_Input* m_input = nullptr;
+    Rows values;
+    int row_edit, col_edit;
+    int s_left, s_top, s_right, s_bottom;
 
 };
 

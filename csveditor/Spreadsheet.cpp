@@ -13,11 +13,11 @@ Spreadsheet::Spreadsheet(
 
     callback( &event_callback, (void*) this );
     when( static_cast<uchar>( FL_WHEN_NOT_CHANGED | when() ) );
-    input = new Fl_Int_Input( W / 2, H / 2, 0, 0 );
-    input->hide();
-    input->callback( input_cb, (void*) this );
-    input->when( FL_WHEN_ENTER_KEY_ALWAYS );
-    input->maximum_size( 5 );
+    m_input = new Fl_Int_Input( W / 2, H / 2, 0, 0 );
+    m_input->hide();
+    m_input->callback( input_cb, (void*) this );
+    m_input->when( FL_WHEN_ENTER_KEY_ALWAYS );
+    m_input->maximum_size( 5 );
     row_edit = col_edit = 0;
     s_left = s_top = s_right = s_bottom = 0;
     for( int c = 0; c < MAX_COLS; c++ )
@@ -28,13 +28,13 @@ Spreadsheet::Spreadsheet(
 
 Spreadsheet::~Spreadsheet()
 {
-    delete this->input;
+    delete this->m_input;
 }
 
 void Spreadsheet::set_value_hide()
 {
-    values[ row_edit ][ col_edit ] = input->value();
-    input->hide();
+    values[ row_edit ][ col_edit ] = m_input->value();
+    m_input->hide();
     window()->cursor( FL_CURSOR_DEFAULT );
 }
 
@@ -64,44 +64,19 @@ void Spreadsheet::start_editing( int R, int C )
     col_edit = C;
     int X, Y, W, H;
     find_cell( CONTEXT_CELL, R, C, X, Y, W, H );
-    input->resize( X, Y, W, H );
-    input->value( values[ R ][ C ].c_str() );
-    input->position( 0, static_cast<int>( strlen( values[ R ][ C ].c_str() ) ) );
-    input->show();
-    input->take_focus();
+    m_input->resize( X, Y, W, H );
+    m_input->value( values[ R ][ C ].c_str() );
+    m_input->position( 0, static_cast<int>( strlen( values[ R ][ C ].c_str() ) ) );
+    m_input->show();
+    m_input->take_focus();
 }
 
 void Spreadsheet::done_editing()
 {
-    if( input->visible() )
+    if( m_input->visible() )
     {
         set_value_hide();
     }
-}
-
-const double Spreadsheet::sum_rows( int C )
-{
-    double sum = 0.0;
-    for( int r = 0; r < rows() - 1; ++r )			// -1: don't include cell data in 'totals' column
-        sum += getVal( r, C );
-    return( sum );
-}
-
-const double Spreadsheet::sum_cols( int R )
-{
-    double sum = 0.0;
-    for( int c = 0; c<cols() - 1; ++c )			// -1: don't include cell data in 'totals' column
-        sum += getVal( R, c );
-    return sum ;
-}
-
-const double Spreadsheet::sum_all()
-{
-    double sum = 0.0;
-    for( int c = 0; c<cols() - 1; ++c )			// -1: don't include cell data in 'totals' column
-        for( int r = 0; r<rows() - 1; ++r )			// -1: ""
-            sum += getVal( r, c );
-    return sum ;
 }
 
 void Spreadsheet::draw_cell( TableContext context, int R, int C, int X, int Y, int W, int H )
@@ -153,7 +128,7 @@ void Spreadsheet::draw_cell( TableContext context, int R, int C, int X, int Y, i
 
     case CONTEXT_CELL:
     {			// table wants us to draw a cell
-        if( R == row_edit && C == col_edit && input->visible() )
+        if( R == row_edit && C == col_edit && m_input->visible() )
         {
             return;					// dont draw for cell with input widget over it
         }
@@ -173,43 +148,22 @@ void Spreadsheet::draw_cell( TableContext context, int R, int C, int X, int Y, i
         fl_push_clip( X + 3, Y + 3, W - 6, H - 6 );
 
         fl_color( FL_BLACK );
-        if( C == cols() - 1 || R == rows() - 1 )
-        {	// Last row or col? Show total
-            fl_font( FL_HELVETICA | FL_BOLD, 14 );	// ..in bold font
-            std::string valueAsString;
-            if( C == cols() - 1 && R == rows() - 1 )
-            {	// Last row+col? Total all cells
-                valueAsString = std::to_string( sum_all() );
-            }
-            else if( C == cols() - 1 )
-            {		// Row subtotal
-                valueAsString = std::to_string( sum_cols( R ) );
-            }
-            else if( R == rows() - 1 )
-            {		// Col subtotal
-                valueAsString = std::to_string( sum_rows( C ) );
-            }
-            fl_draw( valueAsString.c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
-        }
-        else
-        {				// Not last row or col? Show cell contents
-            fl_font( FL_HELVETICA, 14 );		// ..in regular font
-            fl_draw( values[ R ][ C ].c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
-        }
+        fl_font( FL_HELVETICA, 14 );		// ..in regular font
+        fl_draw( values[ R ][ C ].c_str(), X + 3, Y + 3, W - 6, H - 6, FL_ALIGN_RIGHT );
 
         fl_pop_clip();
         return;
     }
 
     case CONTEXT_RC_RESIZE:
-    {			// table resizing rows or columns
-        if( !input->visible() ) return;
+    {
+        if( !m_input->visible() ) return;
         find_cell( CONTEXT_TABLE, row_edit, col_edit, X, Y, W, H );
-        if( X == input->x() && Y == input->y() && W == input->w() && H == input->h() )
+        if( X == m_input->x() && Y == m_input->y() && W == m_input->w() && H == m_input->h() )
         {
             return;					// no change? ignore
         }
-        input->resize( X, Y, W, H );
+        m_input->resize( X, Y, W, H );
         return;
     }
 
@@ -245,7 +199,7 @@ void Spreadsheet::tableEvent()
             start_editing( R, C );				// start new edit
             if( Fl::event() == FL_KEYBOARD && Fl::e_text[ 0 ] != '\r' )
             {
-                input->handle( Fl::event() );			// pass keypress to input widget
+                m_input->handle( Fl::event() );			// pass keypress to input widget
             }
             return;
         }

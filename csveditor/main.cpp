@@ -1,9 +1,27 @@
 #include "Spreadsheet.hpp"
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+
+class Lipa
+{
+public:
+    bool dupa()
+    {
+        return true;
+    }
+};
 
 int main()
 {
+    auto lipa = new Lipa();
+    delete lipa;
+    lipa = nullptr;
+    if( !lipa  || ( lipa && lipa->dupa() ) )
+    {
+        std::cout << "DUPA";
+    }
+
     Fl::option( Fl::OPTION_ARROW_FOCUS, 1 );		// we want arrow keys to navigate table's widgets
     Fl_Double_Window win( 922, 382, "Fl_Table Spreadsheet with Keyboard Navigation" );
     Spreadsheet* table = new Spreadsheet( 20, 20, win.w() - 80, win.h() - 80 );
