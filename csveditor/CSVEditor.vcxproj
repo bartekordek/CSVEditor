@@ -19,13 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CSVFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Spreadsheet.cpp" />
     <ClCompile Include="Table.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CSVFile.h" />
     <ClInclude Include="Spreadsheet.hpp" />
     <ClInclude Include="Table.hpp" />
   </ItemGroup>
@@ -107,16 +105,16 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\wxWidgets\include;$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform);$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
+      <Command>xcopy "$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"
 xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -128,16 +126,16 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\wxWidgets\include;$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform);$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;fltk_gl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
+      <Command>xcopy "$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"
 xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -149,17 +147,17 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\wxWidgets\include;$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform);$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
+      <Command>xcopy "$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"
 xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -171,17 +169,17 @@ xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\deps\wxWidgets\include;$(ProjectDir)..\deps\CUL\libcul\inc;$(ProjectDir)..\deps\fltk-1.3.4-1\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_MBCS;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform);$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration);$(ProjectDir)..\deps\fltk-1.3.4-1\Build-Windows\$(Platform)_$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fltk.lib;fltk_forms.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>
+      <Command>xcopy "$(ProjectDir)..\deps\wxWidgets\Build-Windows\$(Platform)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"
 xcopy "$(ProjectDir)..\deps\CUL\build\$(Platform)_$(Configuration)\*.dll" /y "$(LocalDebuggerWorkingDirectory)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
