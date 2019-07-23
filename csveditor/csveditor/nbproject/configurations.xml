@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="csveditor" displayName="csveditor" projectFiles="true">
+        <logicalFolder name="csveditor" displayName="csveditor" projectFiles="true">
+          <itemPath>Makefile</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Intermediate"
+                       displayName="Intermediate"
+                       projectFiles="true">
+          <logicalFolder name="x64_Debug" displayName="x64_Debug" projectFiles="true">
+            <logicalFolder name="CSVEditor.tlog"
+                           displayName="CSVEditor.tlog"
+                           projectFiles="true">
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/CL.command.1.tlog</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/CL.read.1.tlog</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/CL.write.1.tlog</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/CSVEditor.lastbuildstate</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/link.command.1.tlog</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/link.read.1.tlog</itemPath>
+              <itemPath>../Intermediate/x64_Debug/CSVEditor.tlog/link.write.1.tlog</itemPath>
+            </logicalFolder>
+            <itemPath>../Intermediate/x64_Debug/CSVEditor.log</itemPath>
+            <itemPath>../Intermediate/x64_Debug/CSVFile.obj</itemPath>
+            <itemPath>../Intermediate/x64_Debug/Spreadsheet.obj</itemPath>
+            <itemPath>../Intermediate/x64_Debug/Table.obj</itemPath>
+            <itemPath>../Intermediate/x64_Debug/main.obj</itemPath>
+            <itemPath>../Intermediate/x64_Debug/vc141.pdb</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <itemPath>../CSVEditor.vcxproj</itemPath>
+        <itemPath>../CSVEditor.vcxproj.filters</itemPath>
+        <itemPath>../CSVEditor.vcxproj.user</itemPath>
+        <itemPath>../CSVFile.cpp</itemPath>
+        <itemPath>../CSVFile.h</itemPath>
+        <itemPath>../Spreadsheet.cpp</itemPath>
+        <itemPath>../Spreadsheet.hpp</itemPath>
+        <itemPath>../Table.cpp</itemPath>
+        <itemPath>../Table.hpp</itemPath>
+        <itemPath>../main.cpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>..</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>..</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <standard>11</standard>
+          <incDir>
+            <pElem>..</pElem>
+            <pElem>../../deps/fltk-1.3.4-1/inc</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_forms.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_gl.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_images.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_jpeg.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-lm -lX11 -lXext -lpthread -lXinerama -lXfixes -lXcursor -lXft -lXrender -lfontconfig -ldl</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../CSVEditor.vcxproj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVEditor.vcxproj.filters" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVEditor.vcxproj.user" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CSVFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.log"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.command.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.read.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.write.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CSVEditor.lastbuildstate"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.command.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.read.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.write.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVFile.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/Spreadsheet.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/Table.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/main.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/vc141.pdb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Spreadsheet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Spreadsheet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Table.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>..</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <standard>11</standard>
+          <incDir>
+            <pElem>..</pElem>
+            <pElem>../../deps/fltk-1.3.4-1/inc</pElem>
+          </incDir>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_forms.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_gl.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_images.a</linkerLibFileItem>
+            <linkerLibFileItem>../../deps/fltk-1.3.4-1/Build-Cygwin/libfltk_jpeg.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../CSVEditor.vcxproj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVEditor.vcxproj.filters" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVEditor.vcxproj.user" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../CSVFile.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../CSVFile.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.log"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.command.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.read.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CL.write.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/CSVEditor.lastbuildstate"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.command.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.read.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVEditor.tlog/link.write.1.tlog"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/CSVFile.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/Spreadsheet.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/Table.obj"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/main.obj" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Intermediate/x64_Debug/vc141.pdb"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../Spreadsheet.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Spreadsheet.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../Table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../Table.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
